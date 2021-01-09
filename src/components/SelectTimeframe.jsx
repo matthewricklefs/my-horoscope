@@ -17,6 +17,7 @@ export const SelectTimeframe = ({
                             onTimeframeSelected(timeframes) 
                         }  
                         > 
+                        {timeframes}
                         </button>
                 ))}
             </div>
