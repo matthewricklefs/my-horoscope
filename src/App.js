@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
+
+import { SelectSign } from './components/SelectSign'
+import { SelectTimeframe} from './components/SelectTimeframe'
+import { Horoscope } from './components/Horoscope'
 
 function App() {
+
+  const [selectedSign, setSelectedSign] = useState(null)
+  
+  const [
+    selectedTimeframe, 
+    setSelectedTimeframe,
+  ] = useState(null)
+
+  const restart = () => {
+    setSelectedSign(null)
+    setSelectedTimeframe(null)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <h1>The Horoscope App</h1>
+      {/* {selectedSign} */}
+
+      {!selectedSign && (
+        <SelectSign onSignSelected={setSelectedSign} />
+      )}
+
+      {selectedSign && !selectedTimeframe && (
+        <SelectTimeframe 
+          onTimeframeSelected={setSelectedTimeframe} 
+        />
+      )}
+
+      {selectedSign && selectedTimeframe && (
+        <Horoscope 
+          sign={selectedSign}
+          timeframe={selectedTimeframe}
+        />
+      )}
+
+      <button onClick={restart}>Restart</button>
+
+    </div>  
   );
 }
 
