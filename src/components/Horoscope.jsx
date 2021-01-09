@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getSigns } from '../services/api'
+import { getHoroscope } from '../services/api'
 
 export const Horoscope = ({ sign, timeframe }) => {
 
